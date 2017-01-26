@@ -6,6 +6,11 @@
   </head>
   <body>
     <h2>Add a new course</h2>
+    {%if messages%}
+      {%for message in messages%}
+        {{message}}
+      {%endfor%}
+    {%endif%}
     <form action="/process" method="post">
       {%csrf_token %}
       Course Name: <input type="text" name="course_name" value=""><br>
@@ -14,8 +19,8 @@
     </form>
     <h2>Courses</h2>
     <p>Course Name | Description | Date Added | Actions</p>
-    {%for course in courses%}
-      {{course.course_name}} | {{course.description}} | {{course.date_added}} | <button><a style="color:black;text-decoration:none"href="/delete/{{course.id}}">Remove</a></button><br>
+    {%for description in descriptions%}
+      {{description.course.course_name}} | {{description.description}} | {{description.course.date_added}} | <button><a style="color:black;text-decoration:none"href="/delete/{{course.id}}">Remove</a></button><br>
     {%endfor%}
   </body>
 </html>
