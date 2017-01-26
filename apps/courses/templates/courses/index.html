@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Courses</title>
+  </head>
+  <body>
+    <h2>Add a new course</h2>
+    <form action="/process" method="post">
+      {%csrf_token %}
+      Course Name: <input type="text" name="course_name" value=""><br>
+      Description: <textarea name="description" rows="8" cols="80"></textarea>
+      <input type="submit" name="" value="Add Course">
+    </form>
+    <h2>Courses</h2>
+    <p>Course Name | Description | Date Added | Actions</p>
+    {%for course in courses%}
+      {{course.course_name}} | {{course.description}} | {{course.date_added}} | <button><a style="color:black;text-decoration:none"href="/delete/{{course.id}}">Remove</a></button><br>
+    {%endfor%}
+  </body>
+</html>
+
+
+
+{%for log in activity_log%}
+  <p style='{{color}}'>{{acitivity}}</p>
+{%endfor%}
