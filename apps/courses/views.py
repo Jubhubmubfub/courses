@@ -26,7 +26,7 @@ def process(request):
 
 def delete(request,id):
     context = {
-        'description': Description.objects.get(course_id=id)
+        'descriptions': Description.objects.filter(course_id=id)
     }
     return render(request, 'courses/delete.html',context)
 
