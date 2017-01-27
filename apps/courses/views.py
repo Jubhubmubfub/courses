@@ -26,10 +26,10 @@ def process(request):
 
 def delete(request,id):
     context = {
-        'courses':Course.objects.filter(id=id)
+        'description': Description.objects.get(course_id=id)
     }
     return render(request, 'courses/delete.html',context)
 
 def remove(request,id):
-    Course.objects.filter(id=id).delete()
+    Description.objects.filter(course_id=id).delete()
     return redirect('/')
